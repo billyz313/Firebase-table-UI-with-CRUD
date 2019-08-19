@@ -122,12 +122,9 @@ setDtClick = () => {
             const selectedData = dtTable.row(this).data();
             clearInput();
             $("#hd-id").val(selectedData.id);
-            $("#booktitle").val(selectedData.title);
-            $("#author").val(selectedData.author);
-            $("#category").val(selectedData.category);
-            $("#isbn").val(selectedData.isbn);
-            $("#price").val(selectedData.price);
-            $("#condition").val(selectedData.condition);
+            $("#name").val(selectedData.name);
+            $("#email").val(selectedData.email);
+            $("#roles").val(selectedData.roles.split(","));
             $("#myModal").modal("show");
             $("#btnDelete").show();
         }
@@ -137,17 +134,12 @@ setDtClick = () => {
 $(() => {
     dtTable = $("#dataLayersTable").DataTable({
         columns: [
-            { data: "title" },
-            { data: "author" },
-            { data: "category" },
-            { data: "isbn" },
-            { data: "price" },
-            { data: "condition" }
+            { data: "name" },
+            { data: "email" },
+            { data: "roles" }
         ]
     });
-
-
-
+    
     $("#btnAdd").on("click", () => {
         clearInput();
         $("#myModal").modal("show");
@@ -164,42 +156,35 @@ $(() => {
 
 clearInput = () => {
     $("#hd-id").val("");
-    $("#booktitle").val("");
-    $("#author").val("");
-    $("#category").val("");
-    $("#isbn").val("");
-    $("#price").val("");
-    $("#condition").val("");
-    $("#myModal").val("");
+    $("#name").val("");
+    $("#email").val("");
+    $("#roles").val("");
 };
 
 saveData = () => {
-    const book = {
+    const user = {
         id: "",
-        title: $("#booktitle").val(),
-        author: $("#author").val(),
-        category: $("#category option:selected").text(),
-        isbn: $("#isbn").val(),
-        price: $("#price").val(),
-        condition: $("#condition option:selected").text()
+        name: $("#name").val(),
+        email: $("#email").val(),
+        roles: $("#roles").val().split(",")
     };
 
     if ($("#hd-id").val().length > 0) {
         console.log("update");
-        book.id = $("#hd-id").val();
-        updateBook(book);
+        user.id = $("#hd-id").val();
+        updateUser(user);
     } else {
         console.log("new");
-        Key = db.collection("service/").doc();
-        book.id = Key.id;
-        addBook(book);
+        Key = db.collection("users/").doc();
+        user.id = Key.id;
+        addUser(user);
     }
 };
 
-addBook = book => {
-    console.log("adding book");
-    db.collection("book").doc(Key.id).set(book).then(() => {
-        displayToastMessage("book successfully added!");
+addUser = user => {
+    console.log("adding user");
+    db.collection("users").doc(Key.id).set(user).then(() => {
+        displayToastMessage("user successfully added!");
         getData();
         $("#myModal").modal("toggle");
     }, error => {
@@ -208,8 +193,8 @@ addBook = book => {
     clearInput();
 };
 
-updateBook = book => {
-    db.collection("book").doc(book.id).update(book)
+updateUser = user => {
+    db.collection("users").doc(user.id).update(user)
         .then(() => {
             getData();
             $("#myModal").modal("toggle");
@@ -219,13 +204,14 @@ updateBook = book => {
 };
 
 getData = () => {
-    const docRef = db.collection("book").orderBy("title");
+    const docRef = db.collection("users").orderBy("name");
     docRef.get().then(docData => {
         if (docData.size) {
             const arrObj = [];
             docData.forEach(data => {
                 const obj = data.data();
                 obj.id = data.id;
+                obj.roles = obj.roles.toString();
                 arrObj.push(obj);
             });
             dtTable.clear();
@@ -248,11 +234,11 @@ deleteData = () => {
 };
 
 deleteDB = id => {
-    db.collection("book").doc(id).delete()
+    db.collection("users").doc(id).delete()
         .then(() => {
             getData();
             $("#myModal").modal("toggle");
-            displayToastMessage("Book deleted");
+            displayToastMessage("User deleted");
         }, error => {
             displayToastMessage(error, true);
         });

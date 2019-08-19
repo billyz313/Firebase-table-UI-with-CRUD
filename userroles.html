@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-    <title>Firebase table UI with CRUD</title>
+    <title>User management</title>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/firebasetable.css" rel="stylesheet" />
@@ -18,7 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
     <script src="js/firebaseconfig.js"></script>
-    <script src="js/table-ui.js"></script>
+    <script src="js/userroles-ui.js"></script>
 </head>
 <body>
     <div style="width: 100%; height: 100%; margin: 0;">
@@ -46,7 +46,7 @@
                         <div id="navbar3" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="/">Books</a></li>
-                                <li style="display:none;" id="uRoles"><a href="userroles.html">User Roles</a></li>
+                                <li style="display:none;" id="uRoles"><a href="/">Users</a></li>
                                 <li><a href="#" id="btnGoogleLogin" onclick="toggleAuthentication()">Login with Google</a></li>
                             </ul>
                         </div>
@@ -63,7 +63,7 @@
             </div>
             <div id="adminForm" class="map tab-content" style="display: none;">
                 <div id="editlayers" style="padding: 1.5rem; margin-right: auto; margin-left: auto; border-width: .2rem;">
-                    <h1 class="page-header text-center">Books</h1>
+                    <h1 class="page-header text-center">Users</h1>
                     <div id="overflowwrapper" style="overflow: auto;">
                         <button id="btnAdd" type="button" class="btn btn-primary">
                             Add
@@ -71,12 +71,9 @@
                         <table id="dataLayersTable" class="table table-striped table-bordered" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Category</th>
-                                    <th>ISBN</th>
-                                    <th>Price</th>
-                                    <th>Condition</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
                                 </tr>
                             </thead>
                         </table>
@@ -94,38 +91,15 @@
                                     <form>
                                         <input type="hidden" id="hd-id" />
                                         <div class="form-group">
-                                            <label for="booktitle">Title:</label><br />
-                                            <input type="text" name="booktitle" id="booktitle" value="" placeholder="Title" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                            <label for="name">Name:</label><br />
+                                            <input type="text" name="name" id="name" value="" placeholder="Name" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
                                         </div>             <div class="form-group">
-                                            <label for="author">Author:</label><br />
-                                            <input type="text" name="author" id="author" value="" placeholder="Author" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                            <label for="email">Email:</label><br />
+                                            <input type="text" name="email" id="email" value="" placeholder="Email" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
                                         </div>
                                         <div class="form-group">
-                                            <label for="category">Category:</label><br />
-                                            <select id="category" name="category">
-                                                <option value="Action and adventure">Action and adventure</option>
-                                                <option value="Crime">Crime</option>
-                                                <option value="Drama">Drama</option>
-                                                <option value="Fantasy">Fantasy</option>
-                                            </select>
-                                            <br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="isbn">ISBN:</label><br />
-                                            <input type="text" name="isbn" id="isbn" value="" placeholder="ISBN" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="price">price:</label><br />
-                                            <input type="text" name="price" id="price" value="" placeholder="Price" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="condition">Condition:</label><br />
-                                            <select id="condition" name="condition">
-                                                <option value="New">New</option>
-                                                <option value="Used">Used</option>
-                                                <option value="Borrowed">Borrowed</option>
-                                                <option value="Loaned">Loaned</option>
-                                            </select><br />
+                                            <label for="roles">Roles:</label><br />
+                                            <input type="text" name="roles" id="roles" value="" placeholder="Roles" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
                                         </div>
                                     </form>
                                 </div>

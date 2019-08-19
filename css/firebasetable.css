@@ -234,4 +234,7 @@ However, delay the fade out process for 2.5 seconds */
     .styled-select.slate select {
         width: calc(100vw - 122px);
     }
+    .navbar-brand > img{
+        height:60px;
+    }
 }

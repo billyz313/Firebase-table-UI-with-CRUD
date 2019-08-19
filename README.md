@@ -40,10 +40,11 @@ service cloud.firestore {
     match /users/{userId} {
       allow read: if request.auth.uid != null;
       allow create: if request.auth.uid == userId && request.resource.data.roles.hasAny(["admin"]) == false;
+      allow update: if getRole('admin') == true;
     }
     match /book/{bookId} {
       allow read: if request.auth.uid != null;
-      allow write: if request.auth.uid != null && getRole('admin') == true;
+      allow write: if getRole('admin') == true;
     }
   }
 }
@@ -79,11 +80,7 @@ In the firebase console:
 You are now an admin in the app and can add, edit, or remove books.  You will have to logout of the application and log back in to refresh the roles.  
 Once you have logged back in you will notice the Add button which you can click to start adding.  To edit or remove an entry that has been added you simply click the entry in the table and edit or delete it in the dialog box.
 
-All logged in users will be able to view the books, however only users with the admin role will be able to add, edit, or delete.  This application does not go into user management at this point so if you want to add an admin you will have to manually add the admin field to their user roles array.  
+All logged in users will be able to view the books, however only users with the admin role will be able to add, edit, or delete.  To manage users and roles click the menu link "Users" that displays only if you logged in as an admin user. The edit and add process is exactly the same as the book with the exception of roles which just need to be a comma seperated list.  For this simple app I only use user and admin, but you can use this as a template to expand and use many other roles.
 
-You can add the user management to your applications by adding the following security rule to the users path in the firebase security rules 
-```
-allow edit: if request.auth.uid != null && getRole('admin') == true;
-```
-Of course you will have to create a UI to manage them but you could follow this table example to do so!
+
 Happy coding!
