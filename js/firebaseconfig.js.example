@@ -1,0 +1,9 @@
+﻿var firebaseConfig = {
+    apiKey: "YOUR KEY HERE",
+    authDomain: "YOUR athuDomain here",
+    databaseURL: "YOUR databaseURL here",
+    projectId: "YOUR projectId here",
+    storageBucket: "YOUR storageBucket here",
+    messagingSenderId: "YOUR messagingSenderId here",
+    appId: "YOUR appId here"
+};

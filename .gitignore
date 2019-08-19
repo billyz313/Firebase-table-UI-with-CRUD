@@ -1,0 +1,6 @@
+/bin/
+/js/firebaseconfig.js
+packages.config
+web.config
+web.Debug.config
+
