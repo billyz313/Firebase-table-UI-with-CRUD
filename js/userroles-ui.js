@@ -18,6 +18,7 @@ firebase.auth().onAuthStateChanged(user => {
 
     } else {
         $("#btnGoogleLogin").text("Login with Google");
+        window.location = "/";
     }
 });
 
@@ -46,14 +47,7 @@ checkUser = () => {
         if (querySnapshot.exists) {
             console.log("I exist");
         } else {
-            var user = {
-                name: googleUser.displayName,
-                email: googleUser.email,
-                roles: ["user"]
-            };
-            db.collection("users").doc(googleUser.uid).set(user).then(() => {
-                console.log("I now exist");
-            });
+            window.location = "/";
         }
     }).catch(err => {
         console.log("login needed");
@@ -66,6 +60,7 @@ logout = () => {
         $("#userForm").show();
         $("#btnAdd").hide();
         $("#uRoles").hide();
+        window.location = "/";
     }, error => {
         // An error happened.
         console.log("Logout error.");
@@ -88,12 +83,12 @@ checkwrite = () => {
                 setDtClick();
                 $("#btnAdd").show();
                 $("#uRoles").show();
+                $("#adminForm").show();
+                $("#userForm").hide();
+                getData();
             } else {
-                removeAdminFunctions();
+                window.location = "/";
             }
-            $("#adminForm").show();
-            $("#userForm").hide();
-            getData();
         }).catch(err => {
             console.log("login needed");
         });
