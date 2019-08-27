@@ -50,6 +50,16 @@ service cloud.firestore {
 }
 ```
 
+## Enable Google Auth
+
+While still in the firebase console, in the left panel at the top there is a link that says Authentication:
+
+- Click Authentication
+- Click Sign-in Method
+- Click Google
+- Toggle Enable button to on
+- Click save
+
 ## Deploying to your server
 
 On any web server copy the files from https://github.com/billyz313/Firebase-table-UI-with-CRUD into the folder you would like to publish. Rename js/firebase.js.example to js/firebase.js then go to the code snippet that we set aside earlier. Copy everything inside the { } and replace the same in firebase.js (see example below.) Save the file.

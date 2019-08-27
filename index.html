@@ -81,62 +81,7 @@
                             </thead>
                         </table>
                     </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="dataLayersTableModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <h4 class="modal-title" id="dataLayersTableModalLabel">New Service</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <input type="hidden" id="hd-id" />
-                                        <div class="form-group">
-                                            <label for="booktitle">Title:</label><br />
-                                            <input type="text" name="booktitle" id="booktitle" value="" placeholder="Title" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>             <div class="form-group">
-                                            <label for="author">Author:</label><br />
-                                            <input type="text" name="author" id="author" value="" placeholder="Author" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="category">Category:</label><br />
-                                            <select id="category" name="category">
-                                                <option value="Action and adventure">Action and adventure</option>
-                                                <option value="Crime">Crime</option>
-                                                <option value="Drama">Drama</option>
-                                                <option value="Fantasy">Fantasy</option>
-                                            </select>
-                                            <br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="isbn">ISBN:</label><br />
-                                            <input type="text" name="isbn" id="isbn" value="" placeholder="ISBN" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="price">price:</label><br />
-                                            <input type="text" name="price" id="price" value="" placeholder="Price" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="condition">Condition:</label><br />
-                                            <select id="condition" name="condition">
-                                                <option value="New">New</option>
-                                                <option value="Used">Used</option>
-                                                <option value="Borrowed">Borrowed</option>
-                                                <option value="Loaned">Loaned</option>
-                                            </select><br />
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button id="btnSave" type="button" class="btn btn-primary">Save</button>
-                                    <button id="btnDelete" type="button" class="btn btn-error">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -144,6 +89,62 @@
                         </button>
                     </div>
                     <br style="clear: both; height: 200px;" />
+                </div>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="dataLayersTableModalLabel">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="dataLayersTableModalLabel">New Book</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <input type="hidden" id="hd-id" />
+                                <div class="form-group">
+                                    <label for="booktitle">Title:</label><br />
+                                    <input type="text" name="booktitle" id="booktitle" value="" placeholder="Title" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                </div>             <div class="form-group">
+                                    <label for="author">Author:</label><br />
+                                    <input type="text" name="author" id="author" value="" placeholder="Author" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category:</label><br />
+                                    <select id="category" name="category">
+                                        <option value="Action and adventure">Action and adventure</option>
+                                        <option value="Crime">Crime</option>
+                                        <option value="Drama">Drama</option>
+                                        <option value="Fantasy">Fantasy</option>
+                                    </select>
+                                    <br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="isbn">ISBN:</label><br />
+                                    <input type="text" name="isbn" id="isbn" value="" placeholder="ISBN" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">price:</label><br />
+                                    <input type="text" name="price" id="price" value="" placeholder="Price" class="text ui-widget-content ui-corner-all testforminput fullwidth adminInput" /><br />
+                                </div>
+                                <div class="form-group">
+                                    <label for="condition">Condition:</label><br />
+                                    <select id="condition" name="condition">
+                                        <option value="New">New</option>
+                                        <option value="Used">Used</option>
+                                        <option value="Borrowed">Borrowed</option>
+                                        <option value="Loaned">Loaned</option>
+                                    </select><br />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="btnSave" type="button" class="btn btn-primary">Save</button>
+                            <button id="btnDelete" type="button" class="btn btn-error">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
