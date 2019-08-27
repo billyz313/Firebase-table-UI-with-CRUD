@@ -66,6 +66,7 @@ logout = () => {
         $("#userForm").show();
         $("#btnAdd").hide();
         $("#uRoles").hide();
+        removeAdminFunctions();
     }, error => {
         // An error happened.
         console.log("Logout error.");
@@ -145,8 +146,6 @@ $(() => {
             { data: "condition" }
         ]
     });
-
-
 
     $("#btnAdd").on("click", () => {
         clearInput();
