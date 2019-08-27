@@ -1,6 +1,8 @@
 # Firebase table UI with CRUD
 
-This application is created to show how to create an editable table display of data being stored in the firebase Cloud Firestore database.
+This application is created as part of a tutorial to show how to create an editable table display of data being stored in the firebase Cloud Firestore database.
+
+To follow the tutorial please navigate to http://books.0websitedesigns.com/intro.html
 
 Because we wanted this application to be server agnostic we decided to use firebase to store our data. This eliminates the need to have different setup requirements for different operating systems and also eliminates the need to setup a database. You will have to create a firebase project and then enter the details in the application, but that is all that is needed.
 
